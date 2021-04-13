@@ -55,20 +55,20 @@ end
 categories.each do |cat|
   case cat
   when "pizza"
-    5.times { Item.create!(category_id: 1, name: Faker::Food.dish + " pizza", price: Faker::Number.between(from: 1, to: 8)) } #pizzaID in Category = 1
+    5.times { Item.create!(category_id: 1, name: "pizza-" + Faker::Food.dish , price: Faker::Number.between(from: 1, to: 8)) } #pizzaID in Category = 1
   when "drinks"
     5.times { Item.create!(category_id: 2, name: "jus-" + Faker::Food.fruits, price: Faker::Number.between(from: 1, to: 8)) } #drinksID in Category = 2
   when "cake"
-    5.times { Item.create!(category_id: 3, name: Faker::Food.fruits + " cake", price: Faker::Number.between(from: 1, to: 8)) } #cakeID in Category = 3
+    5.times { Item.create!(category_id: 3, name: "cake-" + Faker::Food.fruits, price: Faker::Number.between(from: 1, to: 8)) } #cakeID in Category = 3
   when "glaces"
-    5.times { Item.create!(category_id: 3, name: Faker::Food.fruits + " glace", price: Faker::Number.between(from: 1, to: 8)) } 
+    5.times { Item.create!(category_id: 4, name: "glace-" + Faker::Food.fruits, price: Faker::Number.between(from: 1, to: 8)) } 
   end
 end
 
 # --------------------------------------------------------------------
 #            Create Orders 
 # --------------------------------------------------------------------
-NUMBER_OF_ORDERS = 1000
+NUMBER_OF_ORDERS = 500
 
 NUMBER_OF_ORDERS.times do |n|
   Order.create!(client_id: rand(1...NUMBER_OF_CLIENTS))
@@ -79,13 +79,34 @@ end
 # --------------------------------------------------------------------
 
 item_IDs = (1..Item.count).to_a
-(1...Order.count).each do |orderID|
+(1..Order.count).each do |orderID|
   item = Item.find(rand(1..item_IDs.count))
   # begin
-    OrderItem.create!(order_id: orderID, item_id: item.id, client_id: Order.find(orderID).client_id)
+  clientID = Order.find(orderID).client_id
+  client = Client.find(clientID)
+  # --------- age calculation -------------------
+  t_now = Time.now
+  t_birth = client.dateofbirth
+  age = t_now.strftime("%Y").to_i - t_birth.strftime("%Y").to_i
+  #----------------------------------------------
+  OrderItem.create!(order_id: orderID, item_id: item.id, client_id: client.id, sex: client.sex, price: item.price, city: client.city, age: age)
   # rescue ActiveRecord::RecordInvalid => invalid
   #   puts invalid.record.errors
   # end
+end
+
+EXTRA_ITEMS_ON_COMMANDS = 3000
+(1..EXTRA_ITEMS_ON_COMMANDS).each do |x|
+  item = Item.find(rand(1..item_IDs.count))
+  orderID = rand(1..200)
+  clientID = Order.find(orderID).client_id
+  client = Client.find(clientID)
+  # --------- age calculation -------------------
+  t_now = Time.now
+  t_birth = client.dateofbirth
+  age = t_now.strftime("%Y").to_i - t_birth.strftime("%Y").to_i
+  #----------------------------------------------
+  OrderItem.create!(order_id: orderID, item_id: item.id, client_id: client.id, sex: client.sex, price: item.price, city: client.city, age: age)
 end
 
 p "seeds created"

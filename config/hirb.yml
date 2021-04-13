@@ -1,0 +1,25 @@
+:output:
+  Item:
+    :options:
+      :fields:
+        - id
+        - name
+        - category_id
+        - price
+
+#   Client:
+#     :options:
+#       :fields:
+#         - id
+#         - name
+#         - email
+#         - mobile
+  
+#   OrderItem:
+#     :options:
+#       :fields:
+#         - id
+#         - order_id
+#         - client_id
+#         - item_id
+
