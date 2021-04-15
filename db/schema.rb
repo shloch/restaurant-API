@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_13_143753) do
+ActiveRecord::Schema.define(version: 2021_04_14_161229) do
 
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_143753) do
     t.integer "price"
     t.string "city"
     t.integer "age"
+    t.string "age_group"
     t.index ["client_id"], name: "index_order_items_on_client_id"
     t.index ["item_id"], name: "index_order_items_on_item_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"

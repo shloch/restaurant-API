@@ -77,6 +77,22 @@ end
 # --------------------------------------------------------------------
 #            Create Orders-items
 # --------------------------------------------------------------------
+def get_age_and_group(client_obj)
+  # --------- age calculation -------------------
+  t_now = Time.now
+  t_birth = client_obj.dateofbirth
+  age = t_now.strftime("%Y").to_i - t_birth.strftime("%Y").to_i
+  #----------------determine age group-------------
+  if ( age < 26)
+    age_group = 'Adolescence'
+  elsif (age < 36)
+    age_group = 'Youths'
+  else
+    age_group = 'Adults'
+  end
+  #----------------------------------------------
+  return {age: age, age_group: age_group}
+end
 
 item_IDs = (1..Item.count).to_a
 (1..Order.count).each do |orderID|
@@ -84,12 +100,10 @@ item_IDs = (1..Item.count).to_a
   # begin
   clientID = Order.find(orderID).client_id
   client = Client.find(clientID)
-  # --------- age calculation -------------------
-  t_now = Time.now
-  t_birth = client.dateofbirth
-  age = t_now.strftime("%Y").to_i - t_birth.strftime("%Y").to_i
+  # --------- age calculation + age group -------------------
+  c = get_age_and_group(client)
   #----------------------------------------------
-  OrderItem.create!(order_id: orderID, item_id: item.id, client_id: client.id, sex: client.sex, price: item.price, city: client.city, age: age)
+  OrderItem.create!(order_id: orderID, item_id: item.id, client_id: client.id, sex: client.sex, price: item.price, city: client.city, age: c[:age], age_group: c[:age_group])
   # rescue ActiveRecord::RecordInvalid => invalid
   #   puts invalid.record.errors
   # end
@@ -101,12 +115,10 @@ EXTRA_ITEMS_ON_COMMANDS = 3000
   orderID = rand(1..200)
   clientID = Order.find(orderID).client_id
   client = Client.find(clientID)
-  # --------- age calculation -------------------
-  t_now = Time.now
-  t_birth = client.dateofbirth
-  age = t_now.strftime("%Y").to_i - t_birth.strftime("%Y").to_i
+  # --------- age calculation + age group -------------------
+  c = get_age_and_group(client)
   #----------------------------------------------
-  OrderItem.create!(order_id: orderID, item_id: item.id, client_id: client.id, sex: client.sex, price: item.price, city: client.city, age: age)
+  OrderItem.create!(order_id: orderID, item_id: item.id, client_id: client.id, sex: client.sex, price: item.price, city: client.city, age: c[:age], age_group: c[:age_group])
 end
 
 p "seeds created"
