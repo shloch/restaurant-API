@@ -1,6 +1,13 @@
 class CategoriesController < ApplicationController
+
   def index
-  end
+      categories = Category.all
+      categories = categories.map do |c|
+        { id: c.id, name: c.cat_name}
+      end
+      
+      render json: { results: categories }.to_json, status: :ok
+    end
 
   # most ordered Category
   def most_ordered_category

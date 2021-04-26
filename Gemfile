@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'faker'
 gem 'database_cleaner'
 gem 'irbtools'
+gem 'rack-cors', :require => 'rack/cors'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

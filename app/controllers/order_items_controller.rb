@@ -9,12 +9,12 @@ class OrderItemsController < ApplicationController
     # female ratio
     ratio_female = orders.first.countOrders/@total_orders * 100
     female_percent = {sex: orders.first.sex, numberOrders: orders.first.countOrders, percentage: helper.number_to_percentage(ratio_female, precision: 2), totalOrders: @total_orders.to_i}
-    itemsHash[:results] << {female: female_percent}
+    itemsHash[:results] << female_percent
 
     # male ratio
     ratio_male = orders.last.countOrders/@total_orders * 100
     male_percent = {sex: orders.last.sex, numberOrders: orders.last.countOrders, percentage: helper.number_to_percentage(ratio_male, precision: 2), totalOrders: @total_orders.to_i}
-    itemsHash[:results] << {male: male_percent}
+    itemsHash[:results] << male_percent
 
     render json: itemsHash
   end
@@ -38,7 +38,7 @@ class OrderItemsController < ApplicationController
   def highest_spender
     itemsHash = { results: []}
     spender = OrderItem.highest_spender
-    itemsHash[:results] << {client: spender[:clientObj].name, sex: spender[:clientObj].sex, mobile:spender[:clientObj].mobile, amount: spender[:price]}
+    itemsHash[:results] << {client_name: spender[:clientObj].name, sex: spender[:clientObj].sex, mobile:spender[:clientObj].mobile, amount: spender[:price]}
     render json: itemsHash
   end
 
