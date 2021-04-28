@@ -2,6 +2,10 @@ class OrderItemsController < ApplicationController
   before_action :get_total_orders, only: [:orders_by_sex, :orders_by_city]
   before_action :get_total_spent, only: [:spending_amounts_by_age_group]
 
+  def index
+    render json: { results: OrderItem.count }.to_json, status: :ok
+  end
+
   def orders_by_sex
     itemsHash = { results: []}
     orders = OrderItem.purchases_by_sex
@@ -49,9 +53,10 @@ class OrderItemsController < ApplicationController
   def spending_amounts_by_age_group
     itemsHash = { results: []}
     orders = OrderItem.spending_by_age_group
+    total_orders = OrderItem.count
     orders.keys.each do |age_group|
       percentage = orders[age_group]/@total_spent * 100
-      itemsHash[:results] << {age_group: age_group, amount: orders[age_group], percentage: helper.number_to_percentage(percentage, precision: 2)}
+      itemsHash[:results] << {age_group: age_group, amount: orders[age_group], total_orders: total_orders, percentage: helper.number_to_percentage(percentage, precision: 2)}
     end
     render json: itemsHash
   end
