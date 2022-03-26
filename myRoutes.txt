@@ -1,0 +1,47 @@
+[0mWelcome to RAILS. You are using ruby 3.0.3p157 (2021-11-24 revision 3fb7d2cadc) [x86_64-darwin20]. Have fun ;)[0m
+[0m                                       Prefix Verb   URI Pattern                                                                                       Controller#Action
+                                         root GET    /                                                                                                 shops#index
+                        clients_total_clients GET    /clients/total_clients(.:format)                                                                  clients#total_clients
+                                   categories GET    /categories(.:format)                                                                             categories#index
+                                   shop_items GET    /shops/:shop_id/items(.:format)                                                                   items#index
+                     shop_orders_total_orders GET    /shops/:shop_id/orders/total_orders(.:format)                                                     orders#total_orders
+                shop_items_most_ordered_items GET    /shops/:shop_id/items/most_ordered_items(.:format)                                                items#most_ordered_items
+        shop_categories_most_ordered_category GET    /shops/:shop_id/categories/most_ordered_category(.:format)                                        categories#most_ordered_category
+                              shop_orderitems GET    /shops/:shop_id/orderitems(.:format)                                                              order_items#index
+                shop_orderitems_orders_by_sex GET    /shops/:shop_id/orderitems/orders_by_sex(.:format)                                                order_items#orders_by_sex
+               shop_orderitems_orders_by_city GET    /shops/:shop_id/orderitems/orders_by_city(.:format)                                               order_items#orders_by_city
+              shop_orderitems_highest_spender GET    /shops/:shop_id/orderitems/highest_spender(.:format)                                              order_items#highest_spender
+shop_orderitems_spending_amounts_by_age_group GET    /shops/:shop_id/orderitems/spending_amounts_by_age_group(.:format)                                order_items#spending_amounts_by_age_group
+                        shop_categories_index GET    /shops/:shop_id/categories/index(.:format)                                                        categories#index
+                                        shops GET    /shops(.:format)                                                                                  shops#index
+             turbo_recede_historical_location GET    /recede_historical_location(.:format)                                                             turbo/native/navigation#recede
+             turbo_resume_historical_location GET    /resume_historical_location(.:format)                                                             turbo/native/navigation#resume
+            turbo_refresh_historical_location GET    /refresh_historical_location(.:format)                                                            turbo/native/navigation#refresh
+                rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
+                   rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                              action_mailbox/ingresses/relay/inbound_emails#create
+                rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                           action_mailbox/ingresses/sendgrid/inbound_emails#create
+          rails_mandrill_inbound_health_check GET    /rails/action_mailbox/mandrill/inbound_emails(.:format)                                           action_mailbox/ingresses/mandrill/inbound_emails#health_check
+                rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                           action_mailbox/ingresses/mandrill/inbound_emails#create
+                 rails_mailgun_inbound_emails POST   /rails/action_mailbox/mailgun/inbound_emails/mime(.:format)                                       action_mailbox/ingresses/mailgun/inbound_emails#create
+               rails_conductor_inbound_emails GET    /rails/conductor/action_mailbox/inbound_emails(.:format)                                          rails/conductor/action_mailbox/inbound_emails#index
+                                              POST   /rails/conductor/action_mailbox/inbound_emails(.:format)                                          rails/conductor/action_mailbox/inbound_emails#create
+            new_rails_conductor_inbound_email GET    /rails/conductor/action_mailbox/inbound_emails/new(.:format)                                      rails/conductor/action_mailbox/inbound_emails#new
+           edit_rails_conductor_inbound_email GET    /rails/conductor/action_mailbox/inbound_emails/:id/edit(.:format)                                 rails/conductor/action_mailbox/inbound_emails#edit
+                rails_conductor_inbound_email GET    /rails/conductor/action_mailbox/inbound_emails/:id(.:format)                                      rails/conductor/action_mailbox/inbound_emails#show
+                                              PATCH  /rails/conductor/action_mailbox/inbound_emails/:id(.:format)                                      rails/conductor/action_mailbox/inbound_emails#update
+                                              PUT    /rails/conductor/action_mailbox/inbound_emails/:id(.:format)                                      rails/conductor/action_mailbox/inbound_emails#update
+                                              DELETE /rails/conductor/action_mailbox/inbound_emails/:id(.:format)                                      rails/conductor/action_mailbox/inbound_emails#destroy
+     new_rails_conductor_inbound_email_source GET    /rails/conductor/action_mailbox/inbound_emails/sources/new(.:format)                              rails/conductor/action_mailbox/inbound_emails/sources#new
+        rails_conductor_inbound_email_sources POST   /rails/conductor/action_mailbox/inbound_emails/sources(.:format)                                  rails/conductor/action_mailbox/inbound_emails/sources#create
+        rails_conductor_inbound_email_reroute POST   /rails/conductor/action_mailbox/:inbound_email_id/reroute(.:format)                               rails/conductor/action_mailbox/reroutes#create
+     rails_conductor_inbound_email_incinerate POST   /rails/conductor/action_mailbox/:inbound_email_id/incinerate(.:format)                            rails/conductor/action_mailbox/incinerates#create
+                           rails_service_blob GET    /rails/active_storage/blobs/redirect/:signed_id/*filename(.:format)                               active_storage/blobs/redirect#show
+                     rails_service_blob_proxy GET    /rails/active_storage/blobs/proxy/:signed_id/*filename(.:format)                                  active_storage/blobs/proxy#show
+                                              GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                                        active_storage/blobs/redirect#show
+                    rails_blob_representation GET    /rails/active_storage/representations/redirect/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations/redirect#show
+              rails_blob_representation_proxy GET    /rails/active_storage/representations/proxy/:signed_blob_id/:variation_key/*filename(.:format)    active_storage/representations/proxy#show
+                                              GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format)          active_storage/representations/redirect#show
+                           rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                                       active_storage/disk#show
+                    update_rails_disk_service PUT    /rails/active_storage/disk/:encoded_token(.:format)                                               active_storage/disk#update
+                         rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                                    active_storage/direct_uploads#create
+[0m[0m
