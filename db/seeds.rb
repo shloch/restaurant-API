@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-DatabaseCleaner.clean_with(:truncation)
+#DatabaseCleaner.clean_with(:truncation)
 
 french_cities = ["Paris", "Marseille", "Lyon", "Bordeaux", "Nice"]
 spanish_cities = ["madrid", "Barcelone", "Seville"]
