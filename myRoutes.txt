@@ -12,7 +12,6 @@
                shop_orderitems_orders_by_city GET    /shops/:shop_id/orderitems/orders_by_city(.:format)                                               order_items#orders_by_city
               shop_orderitems_highest_spender GET    /shops/:shop_id/orderitems/highest_spender(.:format)                                              order_items#highest_spender
 shop_orderitems_spending_amounts_by_age_group GET    /shops/:shop_id/orderitems/spending_amounts_by_age_group(.:format)                                order_items#spending_amounts_by_age_group
-                        shop_categories_index GET    /shops/:shop_id/categories/index(.:format)                                                        categories#index
                                         shops GET    /shops(.:format)                                                                                  shops#index
              turbo_recede_historical_location GET    /recede_historical_location(.:format)                                                             turbo/native/navigation#recede
              turbo_resume_historical_location GET    /resume_historical_location(.:format)                                                             turbo/native/navigation#resume

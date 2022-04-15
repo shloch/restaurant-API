@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   get '/clients/total_clients', to: 'clients#total_clients'
   get '/categories', to: 'categories#index'
 
-  
-
   resources :shops, only: [:index] do
     get '/items', to: 'items#index'
     get '/orders/total_orders', to: 'orders#total_orders'
